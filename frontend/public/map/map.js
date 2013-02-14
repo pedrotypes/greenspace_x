@@ -1,6 +1,6 @@
 $(function() {
     $.getJSON('/bases', function(data) {
-        var map = $("body");
+        var map = $("#map");
         $.each(data, function(i, base) {
             var tpl = Handlebars.compile($("#tpl-base").html());
             var radius = Math.round(base.size / 2);

@@ -11,30 +11,3 @@ nav {
     background: #311;
     padding: 10px;
 }
-
-#map {
-    width: 100%;
-    border: 0;
-}
-.base-map {
-    position: relative;
-    width: 500px;
-    height: 500px;
-    background: #111;
-    margin: 0 auto;
-}
-
-.base-area {
-    width: 10px;
-    height: 10px;
-    cursor: pointer;
-    position: absolute;
-}
-.base-area:hover {
-    background: #777;
-}
-
-.base {
-    background: #eee;
-    border-radius: 10px;
-}

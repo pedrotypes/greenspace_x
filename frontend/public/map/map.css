@@ -1,11 +1,10 @@
-body {
-    background: #111;
-    color: #ddd;
-    font-family: arial, verdana, sans-serif;
-    font-size: 100%;
-    margin: 0;
+.map-wrapper {
+    margin: 0 auto;
+    width: 500px;
 }
-
+.map-frame {
+    position: relative;
+}
 .base-area {
     width: 10px;
     height: 10px;
