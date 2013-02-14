@@ -1,0 +1,44 @@
+from mongoengine import *
+import random
+
+
+class Player(Document):
+    name = StringField(required=True)
+
+
+class Base(Document):
+    player = ReferenceField(Player, dbref=False)
+    name = StringField(required=True)
+    size = IntField(default=50)
+    money = IntField(default=0)
+
+    def rollSize(self):
+        roll = random.randint(1, 10)
+        return roll
+
+    def tick(self):
+        if (self.player != None):
+            self.money += self.size
+            self.save()
+
+
+class Fleet(Document):
+    player = ReferenceField(Player, dbref=False)
+    size = IntField(default=10)
+    position = ReferenceField(Base, dbref=False)
+    destination = ReferenceField(Base, dbref=False)
+    eta = IntField(default=0)
+
+    def moveTo(self, base):
+        if (base != self.position):
+            self.destination = base
+            self.eta = 3
+            self.save()
+
+    def move(self):
+        if (self.eta > 0):
+            self.eta -= 1
+            if (self.eta == 0):
+                self.position = self.destination
+                self.destination = None
+            self.save()
