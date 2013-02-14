@@ -39,12 +39,22 @@ names = [
     'Zhakul',
 ]
 bases = []
+grid = []
+
+
+def rollCoords(grid):
+    x = random.randint(1, 100)
+    y = random.randint(1, 100)
+    return [x, y]
+
 for n in names:
-    b = Base(name=n)
+    coords = rollCoords(grid)
+    b = Base(name=n, x=coords[0], y=coords[1])
     b.size = b.rollSize()
     b.save()
     bases.append(b)
     print "%s (%d)" % (b.name, b.size)
+
 
 # Fleets
 Fleet.drop_collection()

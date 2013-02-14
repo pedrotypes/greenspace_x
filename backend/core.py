@@ -11,6 +11,8 @@ class Base(Document):
     name = StringField(required=True)
     size = IntField(default=50)
     money = IntField(default=0)
+    x = IntField()
+    y = IntField()
 
     def rollSize(self):
         roll = random.randint(1, 10)
