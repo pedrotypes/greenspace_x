@@ -43,8 +43,8 @@ grid = []
 
 
 def rollCoords(grid):
-    x = random.randint(1, 100)
-    y = random.randint(1, 100)
+    x = random.randint(1, 50)
+    y = random.randint(1, 50)
     return [x, y]
 
 for n in names:

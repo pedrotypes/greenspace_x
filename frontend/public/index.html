@@ -5,9 +5,15 @@
         <link rel="stylesheet" type="text/css" href="/static/main.css">
     </head>
     <body>
-        Oh hai!
+        
+        <div id='map' class='base-map'></div>
 
-
+        <script type="text/javascript" src="/static/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/handlebars.js"></script>
         <script type="text/javascript" src="/static/main.js"></script>
+
+        <script id="tpl-base" type="text/x-handlebars-template">
+            <div class='base' style='top: {{ top }}px; left: {{ left }}px; width: {{ width }}px; height: {{ height }}px;'></div>
+        </script>
     </body>
 </html>
