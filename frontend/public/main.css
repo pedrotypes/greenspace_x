@@ -14,12 +14,17 @@ body {
     margin: 0 auto;
 }
 
-.base {
-    position: absolute;
-    font-size: 0.5em;
-    background: #eee;
+.base-area {
     width: 10px;
     height: 10px;
-    border-radius: 10px;
     cursor: pointer;
+    position: absolute;
+}
+.base-area:hover {
+    background: #777;
+}
+
+.base {
+    background: #eee;
+    border-radius: 10px;
 }
