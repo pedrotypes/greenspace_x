@@ -25,6 +25,11 @@ app.get('/', function(req, res) {
         res.send(indexHtml);
     });
 });
+app.get('/map', function(req, res) {
+    fs.readFile(__dirname + '/public/map.html', 'utf8', function(err, mapHtml) {
+        res.send(mapHtml);
+    });
+});
 
 app.get('/bases', function(req, res) {
     Base.find(function(err, bases) {

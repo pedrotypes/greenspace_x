@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Stargame</title>
-        <link rel="stylesheet" type="text/css" href="/static/main.css">
+        <title>Stargame Console</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
     </head>
     <body>
-        
-        <div id='map' class='base-map'></div>
+        <nav>
+            menu
+        </nav>
+        <iframe id='map' src='/map'></iframe>
 
-        <script type="text/javascript" src="/static/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="/static/handlebars.js"></script>
-        <script type="text/javascript" src="/static/main.js"></script>
-
-        <script id="tpl-base" type="text/x-handlebars-template">
-            <div 
-                class='base-area'
-                style='
-                    top: {{ area_top }}px; 
-                    left: {{ area_left }}px;
-                '
-                rel='{{ base._id }}'
-                title='{{ base.name }}'
-            >
-                <div class='base' style='
-                    width: {{ base_width }}px; 
-                    height: {{ base_height }}px;
-                    margin: {{ base_margin }}px;
-                '></div>
-            </div>
-        </script>
+        <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/js/main.js"></script>
     </body>
 </html>

@@ -3,9 +3,19 @@ body {
     color: #ddd;
     font-family: arial, verdana, sans-serif;
     font-size: 100%;
-    margin: 2em;
+    margin: 0;
 }
 
+nav {
+    height: 30px;
+    background: #311;
+    padding: 10px;
+}
+
+#map {
+    width: 100%;
+    border: 0;
+}
 .base-map {
     position: relative;
     width: 500px;

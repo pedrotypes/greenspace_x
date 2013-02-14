@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Starmap</title>
+        <link rel="stylesheet" type="text/css" href="/static/map/map.css">
+    </head>
+    <body>
+        
+        <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/js/handlebars.js"></script>
+        <script type="text/javascript" src="/static/map/map.js"></script>
+
+        <script id="tpl-base" type="text/x-handlebars-template">
+            <div 
+                class='base-area'
+                style='
+                    top: {{ area_top }}px; 
+                    left: {{ area_left }}px;
+                '
+                rel='{{ base._id }}'
+                title='{{ base.name }}'
+            >
+                <div class='base' style='
+                    width: {{ base_width }}px; 
+                    height: {{ base_height }}px;
+                    margin: {{ base_margin }}px;
+                '></div>
+            </div>
+        </script>
+    </body>
+</html>
