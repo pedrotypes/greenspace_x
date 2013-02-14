@@ -1,10 +1,9 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
 
 app.configure(function() {
-    app.use(express.static('/static', __dirname + '/public'));
-    app.engine('.html', require('jade').__express);
-    app.set('view engine', 'jade');
+    app.use('/static', express.static(__dirname + '/public'));
 });
 
 var mongoose = require('mongoose');
@@ -22,7 +21,9 @@ var Base = mongoose.model('Base', baseSchema);
 
 
 app.get('/', function(req, res) {
-    res.render('index', {title: 'cenas'});
+    fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, indexHtml) {
+        res.send(indexHtml);
+    });
 });
 
 app.get('/bases', function(req, res) {
