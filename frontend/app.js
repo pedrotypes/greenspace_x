@@ -2,6 +2,12 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 
+// RabbitMQ
+var amqp = require('amqp');
+var connection = amqp.createConnection({host:'127.0.0.1'});
+var rpc = new (require('./amqprpc'))(connection);
+// --
+
 app.configure(function() {
     app.use('/static', express.static(__dirname + '/public'));
 });
@@ -74,6 +80,15 @@ app.get('/fleet/move/:id', function(req, res) {
             });
             res.send('ok');
         });
+    });
+});
+
+app.get('/rabbit', function(req, res) {
+    rpc.makeRequest('greenspace_fleet', {first_name: 'Leroy', last_name: 'Jenkins'}, function(err, response){
+      if(err)
+        res.send(err);
+      else
+        res.send(response.data.toString());
     });
 });
 
