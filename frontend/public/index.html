@@ -7,7 +7,7 @@
     </head>
     <body>
         <nav>
-            menu
+            <span id='fleet-info'></span>
         </nav>
 
         <div class='map-wrapper'>
@@ -36,6 +36,10 @@
                     margin: {{ base_margin }}px;
                 '></div>
             </div>
+        </script>
+
+        <script id='tpl-fleet-info' type='text/x-handlebars-template'>
+            Fleet arriving at {{ destination.name }} in {{ eta }} turns.
         </script>
     </body>
 </html>

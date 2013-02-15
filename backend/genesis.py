@@ -38,6 +38,7 @@ names = [
     'Xil',
     'Ynoth',
     'Zhakul',
+    'Roxana',  # <3
     # Star Wars
     # 'Ablajeck',
     # 'Abregado',
@@ -146,7 +147,7 @@ grid = []
 
 def rollCoords(grid):
     x = random.randint(1, 50)
-    y = random.randint(1, 50)
+    y = random.randint(1, 30)
     return [x, y]
 
 for n in names:
