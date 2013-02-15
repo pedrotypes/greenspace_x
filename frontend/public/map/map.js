@@ -9,6 +9,7 @@ $(function() {
     };
 
     drawMap();
+    setInterval(refreshFleet, 10000);
 });
 
 function refreshFleet()
@@ -35,7 +36,7 @@ function drawMap()
                 base: base
             }));
         });
-        
+
         refreshFleet();
     });
 }
