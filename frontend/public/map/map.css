@@ -19,3 +19,12 @@
     background: #eee;
     border-radius: 10px;
 }
+.fleet {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    z-index: 9;
+    font-size: 10px;
+    line-height: 10px;
+    color: red;
+}

@@ -38,6 +38,10 @@
             </div>
         </script>
 
+        <script id='tpl-fleet' type='text/x-handlebars-template'>
+            <div id='fleet' class='fleet' style='top: {{ top }}px; left: {{ left }}px;'>#</div>
+        </script>
+
         <script id='tpl-fleet-info' type='text/x-handlebars-template'>
             {{#if destination}}
             Arriving at {{ destination.name }} in {{ eta }} turns.

@@ -5,11 +5,12 @@ var tpl = {};
 $(function() {
     tpl = {
         base: Handlebars.compile($("#tpl-base").html()),
+        fleet: Handlebars.compile($("#tpl-fleet").html()),
         fleet_info: Handlebars.compile($("#tpl-fleet-info").html())
     };
 
     drawMap();
-    setInterval(refreshFleet, 2000);
+    setInterval(refreshFleet, 1000);
 
     $("#map").on('click', '.base-area', function() {
         $.get('/fleet/move/' + $(this).attr('rel')).done(refreshFleet);
@@ -20,6 +21,11 @@ function refreshFleet()
 {
     $.getJSON('/fleet', function(data) {
         $("#fleet-info").html(tpl.fleet_info(data));
+        $("#fleet").remove();
+        $("#map").append(tpl.fleet({
+            left: data.position.x * 10 - 5,
+            top: data.position.y * 10 - 5
+        }));
     });
 }
 
