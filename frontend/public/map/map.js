@@ -9,7 +9,11 @@ $(function() {
     };
 
     drawMap();
-    setInterval(refreshFleet, 10000);
+    setInterval(refreshFleet, 2000);
+
+    $("#map").on('click', '.base-area', function() {
+        $.get('/fleet/move/' + $(this).attr('rel')).done(refreshFleet);
+    });
 });
 
 function refreshFleet()

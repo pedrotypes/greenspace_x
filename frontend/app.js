@@ -53,6 +53,16 @@ app.get('/fleet', function(req, res) {
             res.send(doc);
         });
 });
+app.get('/fleet/move/:id', function(req, res) {
+    Fleet.findOne(function(err, doc_fleet) {
+        Base.findById(req.param('id'), function(err, doc_base) {
+            doc_fleet.destination = new Base(doc_base);
+            doc_fleet.eta = 3;
+            doc_fleet.save();
+        });
+        res.send('ok');
+    });
+});
 
 app.get('/bases', function(req, res) {
     Base.find(function(err, bases) {
