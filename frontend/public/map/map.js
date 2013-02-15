@@ -1,3 +1,4 @@
+var fleetRefreshTimeout = 500;
 var fleet = {};
 var bases = [];
 var tpl = {};
@@ -10,7 +11,7 @@ $(function() {
     };
 
     drawMap();
-    setInterval(refreshFleet, 1000);
+    setInterval(refreshFleet, fleetRefreshTimeout);
 
     $("#map").on('click', '.base-area', function() {
         $.get('/fleet/move/' + $(this).attr('rel')).done(refreshFleet);
