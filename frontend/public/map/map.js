@@ -23,11 +23,33 @@ function refreshFleet()
     $.getJSON('/fleet', function(data) {
         $("#fleet-info").html(tpl.fleet_info(data));
         $("#fleet").remove();
-        $("#map").append(tpl.fleet({
+
+        var offset;
+        if (data.eta) offset = calculateFleetOffset(data);
+        else offset = {
             left: data.position.x * 10 - 5,
             top: data.position.y * 10 - 5
-        }));
+        };
+        console.log(offset);
+        $("#map").append(tpl.fleet(offset));
     });
+}
+
+function calculateFleetOffset(fleet)
+{
+    // XXX: HARDCODED
+    var totalTime = 3;
+    // XXX
+    var delta = {
+        x: fleet.destination.x - fleet.position.x,
+        y: fleet.destination.y - fleet.position.y
+    };
+    var progress = 1 - parseInt(fleet.eta, 10) / totalTime;
+
+    return {
+        top: (fleet.position.y + (delta.y * progress)) * 10 - 5,
+        left: (fleet.position.x + (delta.x * progress)) * 10 - 5
+    };
 }
 
 function drawMap()
