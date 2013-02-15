@@ -39,14 +39,19 @@
         </script>
 
         <script id='tpl-fleet' type='text/x-handlebars-template'>
-            <div id='fleet' class='fleet' style='top: {{ top }}px; left: {{ left }}px;'></div>
+            <div id='fleet' class='fleet {{#if moving}}fleet-moving{{/if}}' style='top: {{ top }}px; left: {{ left }}px;'>
+                {{#if moving}}:D{{/if}}
+            </div>
         </script>
 
         <script id='tpl-fleet-info' type='text/x-handlebars-template'>
             {{#if destination}}
-            Arriving at {{ destination.name }} in {{ eta }} turns.
+                Arriving in 
+                <strong>{{ destination.name }}</strong>
+                in {{ eta }} turns.
             {{else}}
-            Orbiting {{ position.name }}
+                Orbiting 
+                <strong>{{ position.name }}</strong>
             {{/if}}
         </script>
     </body>

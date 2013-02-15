@@ -23,10 +23,12 @@ class Fleet(Document):
     position = ReferenceField(Base, dbref=False)
     destination = ReferenceField(Base, dbref=False)
     eta = IntField(default=0)
+    eta_total = IntField(default=0)
 
     def moveTo(self, base):
         if (base != self.position):
             self.destination = base
+            self.eta_total = 3
             self.eta = 3
             self.save()
 

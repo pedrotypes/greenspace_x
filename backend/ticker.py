@@ -22,7 +22,7 @@ def main():
                         % (fleet.id, base.name, fleet.eta)
 
             # Wait a bit before running again
-            time.sleep(1)
+            time.sleep(0.250)
 
     except KeyboardInterrupt:
         print "Bye!"

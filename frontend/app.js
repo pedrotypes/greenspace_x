@@ -28,7 +28,8 @@ var fleetSchema = mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Base'
     },
-    eta: Number
+    eta: Number,
+    eta_total: Number
 }, { collection: 'fleet'});
 var Fleet = mongoose.model('Fleet', fleetSchema);
 
@@ -55,12 +56,24 @@ app.get('/fleet', function(req, res) {
 });
 app.get('/fleet/move/:id', function(req, res) {
     Fleet.findOne(function(err, doc_fleet) {
-        Base.findById(req.param('id'), function(err, doc_base) {
-            doc_fleet.destination = new Base(doc_base);
-            doc_fleet.eta = 3;
-            doc_fleet.save();
+        Base.findById(doc_fleet.position, function(err, doc_position) {
+            Base.findById(req.param('id'), function(err, doc_base) {
+                // This logic should be offloaded to the backend
+                var delta = {
+                    x: doc_position.x - doc_base.x,
+                    y: doc_position.y - doc_base.y
+                };
+
+                distance = Math.sqrt(Math.pow(delta.x, 2) + Math.pow(delta.y, 2));
+                eta = Math.round(distance);
+
+                doc_fleet.destination = new Base(doc_base);
+                doc_fleet.eta = eta;
+                doc_fleet.eta_total = eta;
+                doc_fleet.save();
+            });
+            res.send('ok');
         });
-        res.send('ok');
     });
 });
 
